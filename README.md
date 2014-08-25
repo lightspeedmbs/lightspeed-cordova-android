@@ -1,0 +1,2 @@
+lightspeed-cordova-android
+==========================
