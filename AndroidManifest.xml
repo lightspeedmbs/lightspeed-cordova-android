@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 請將package的值，改成您的package name -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.herxun.lscodorva"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="17" />
+
+    <!-- 注意！請確定底下的permission都有加入至您的Manifest file中，否則可能會導致App發生異常 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- 指定使用推播服務的類型， 使用Lightspeed獨有服務時，則指定為“ARROWNOCK” -->
+        <meta-data
+            android:name="com.arrownock.push.SERVICE_TYPE"
+            android:value="ARROWNOCK" />
+        
+        <!-- 宣告Lightspeed推播核心服務 -->
+        <service android:name="com.arrownock.push.PushService" />
+
+        <receiver
+            android:name="co.herxun.lscordova.ExtendedReceiver"
+            android:exported="true"
+            android:label="Receiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.arrownock.push.PushService.MSG_ARRIVAL" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+
+            <!-- 點擊notification後跳轉到的Activity。請將底下value裡面的值換成您的Activity。 -->
+            <meta-data
+                android:name="co.herxun.lscordova.ArrivalAct"
+                android:value="YourPackage.YourActivity"
+                />
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OverView!!!</title>
+</head>
+<body>
+<center><b>Lightspeed push Cordova Plugin.</b><br><br></center>
+
+ Below describes the steps you need to do for register Lightspeed Push channels.
+ <br><br>
+    1. With the action string ActionSet.INITIALIZE_PUSH, initialize a push instance.
+    <br><br>
+    2. If you're using built-in Lightspeed push, a Lightspeed server status monitor is necessary.
+    <br> 
+       With action string ActionSet.STATUS_MONITOR you could implement a callback function to monitor the status.
+    <br><br> 
+    3. Register corresponding channels with action string ActionSet.REGISTER
+    <br><br>
+    4. Implement a callback function as receiving push with action string ActionSet.RECV_PUSH
+    <br><br>
+    5. ( Optional ) You could implement other feature of Push with the rest action string. For example, ActionSet.SET_MUTE set the device receiving push without system alarm.
+    <br><br>
+  For more detail information, please refer to the ActionSet to see what you can do with this plug-in.</body>
+</html>
